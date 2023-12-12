@@ -4,11 +4,11 @@
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+// $user_id = $_SESSION['user_id'];
 
-if(!isset($user_id)){
-   header('location:login.php');
-};
+// if(!isset($user_id)){
+//    header('location:login.php');
+// };
 
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
@@ -17,11 +17,11 @@ if(isset($_GET['delete'])){
    header('location:cart.php');
 }
 
-if(isset($_GET['delete_all'])){
-   $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
-   $delete_cart_item->execute([$user_id]);
-   header('location:cart.php');
-}
+// if(isset($_GET['delete_all'])){
+//    $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
+//    $delete_cart_item->execute([$user_id]);
+//    header('location:cart.php');
+// }
 
 if(isset($_POST['update_qty'])){
    $cart_id = $_POST['cart_id'];
@@ -61,8 +61,8 @@ if(isset($_POST['update_qty'])){
 
    <?php
       $grand_total = 0;
-      $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
-      $select_cart->execute([$user_id]);
+      $select_cart = $conn->prepare("SELECT * FROM `cart`");
+      $select_cart->execute();
       if($select_cart->rowCount() > 0){
          while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){ 
    ?>
@@ -91,7 +91,7 @@ if(isset($_POST['update_qty'])){
    <div class="cart-total">
       <p>grand total : <span>$<?= $grand_total; ?>/-</span></p>
       <a href="shop.php" class="option-btn">continue shopping</a>
-      <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>">delete all</a>
+      <!-- <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>">delete all</a> -->
       <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a>
    </div>
 
