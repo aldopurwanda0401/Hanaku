@@ -4,11 +4,19 @@
 
 session_start();
 
-// $user_id = $_SESSION['user_id'];
+if (!isset($_SESSION['user_id'])) {
+   // Atur user_id, misalnya dari database atau sesuai dengan pengguna saat ini
+   $_SESSION['user_id'] = generateUniqueUserId(); // fungsi ini untuk menghasilkan ID unik
+}
+$user_id = $_SESSION['user_id'];
 
-// if(!isset($user_id)){
-//    header('location:login.php');
-// };
+function generateUniqueUserId() {
+   // Tambahkan prefix atau manipulasi sesuai kebutuhan
+   $prefix = 'user_';
+   $unique_id = $prefix . uniqid();
+
+   return $unique_id;
+}
 
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
@@ -61,8 +69,9 @@ if(isset($_POST['update_qty'])){
 
    <?php
       $grand_total = 0;
-      $select_cart = $conn->prepare("SELECT * FROM `cart`");
-      $select_cart->execute();
+      $_SESSION['cart']= $user_id;
+      $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+      $select_cart->execute([$user_id]);
       if($select_cart->rowCount() > 0){
          while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){ 
    ?>
@@ -85,6 +94,8 @@ if(isset($_POST['update_qty'])){
    }else{
       echo '<p class="empty">your cart is empty</p>';
    }
+
+
    ?>
    </div>
 

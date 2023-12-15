@@ -4,10 +4,19 @@
 
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+   // Atur user_id, misalnya dari database atau sesuai dengan pengguna saat ini
+   $_SESSION['user_id'] = generateUniqueUserId(); // fungsi ini untuk menghasilkan ID unik
+}
+
 $user_id = $_SESSION['user_id'];
 
-if(!isset($user_id)){
-   header('location:login.php');
+function generateUniqueUserId() {
+   // Tambahkan prefix atau manipulasi sesuai kebutuhan
+   $prefix = 'user_';
+   $unique_id = $prefix . uniqid();
+
+   return $unique_id;
 }
 
 ?>

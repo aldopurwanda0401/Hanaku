@@ -4,11 +4,20 @@
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+if (!isset($_SESSION['user_id'])) {
+   // Atur user_id, misalnya dari database atau sesuai dengan pengguna saat ini
+   $_SESSION['user_id'] = generateUniqueUserId(); // fungsi ini untuk menghasilkan ID unik
+}
 
-if(!isset($user_id)){
-   header('location:login.php');
-};
+$user_id = $_SESSION['cart'];
+
+function generateUniqueUserId() {
+   // Tambahkan prefix atau manipulasi sesuai kebutuhan
+   $prefix = 'user_';
+   $unique_id = $prefix . uniqid();
+
+   return $unique_id;
+}
 
 if(isset($_POST['order'])){
 
@@ -26,7 +35,7 @@ if(isset($_POST['order'])){
 
    $cart_total = 0;
    $cart_products[] = '';
-
+   $_SESSION['cart'] =$user_id;
    $cart_query = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
    $cart_query->execute([$user_id]);
    if($cart_query->rowCount() > 0){
@@ -47,6 +56,7 @@ if(isset($_POST['order'])){
    }elseif($order_query->rowCount() > 0){
       $message[] = 'order placed already!';
    }else{
+      $_SESSION['cart']=$user_id;
       $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price, placed_on) VALUES(?,?,?,?,?,?,?,?,?)");
       $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $cart_total, $placed_on]);
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");

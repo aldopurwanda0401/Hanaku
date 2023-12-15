@@ -11,6 +11,23 @@ if(isset($message)){
    }
 }
 
+// session_start();
+
+// if (!isset($_SESSION['user_id'])) {
+//    // Atur user_id, misalnya dari database atau sesuai dengan pengguna saat ini
+//    $_SESSION['user_id'] = generateUniqueUserId(); // fungsi ini untuk menghasilkan ID unik
+// }
+
+// $user_id = $_SESSION['user_id'];
+
+// function generateUniqueUserId() {
+//    // Tambahkan prefix atau manipulasi sesuai kebutuhan
+//    $prefix = 'user_';
+//    $unique_id = $prefix . uniqid();
+
+//    return $unique_id;
+// }
+
 ?>
 
 <header class="header">
@@ -29,11 +46,10 @@ if(isset($message)){
 
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="user-btn" class="fas fa-user"></div>
          <a href="search_page.php" class="fas fa-search"></a>
          <?php
-            $count_cart_items = $conn->prepare("SELECT * FROM `cart`");
-            $count_cart_items->execute();
+            $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+            $count_cart_items->execute([$user_id]);
          ?>
          <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $count_cart_items->rowCount(); ?>)</span></a>
       </div>

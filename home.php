@@ -2,13 +2,22 @@
 
 @include 'config.php';
 
-   // session_start();
+session_start();
 
-   // $user_id = $_SESSION['user_id'];
+if (!isset($_SESSION['user_id'])) {
+   // Atur user_id, misalnya dari database atau sesuai dengan pengguna saat ini
+   $_SESSION['user_id'] = generateUniqueUserId(); // fungsi ini untuk menghasilkan ID unik
+}
 
-// if(!isset($user_id)){
-//    header('location:login.php');
-// };
+$user_id = $_SESSION['user_id'];
+
+function generateUniqueUserId() {
+   // Tambahkan prefix atau manipulasi sesuai kebutuhan
+   $prefix = 'user_';
+   $unique_id = $prefix . uniqid();
+
+   return $unique_id;
+}
 
 
 if(isset($_POST['add_to_cart'])){
@@ -24,15 +33,16 @@ if(isset($_POST['add_to_cart'])){
    $p_qty = $_POST['p_qty'];
    $p_qty = filter_var($p_qty, FILTER_SANITIZE_STRING);
 
-   $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ?");
-   $check_cart_numbers->execute([$p_name]);
+   $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
+   $check_cart_numbers->execute([$p_name,$user_id]);
 
    if($check_cart_numbers->rowCount() > 0){
       $message[] = 'already added to cart!';
+      $_SESSION['cart'] = $check_cart_numbers;
    }else{
 
-      $insert_cart = $conn->prepare("INSERT INTO `cart`(pid, name, price, quantity, image) VALUES(?,?,?,?,?)");
-      $insert_cart->execute([$pid, $p_name, $p_price, $p_qty, $p_image]);
+      $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
+      $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
       $message[] = 'added to cart!';
    }
 
