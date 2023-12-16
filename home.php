@@ -74,9 +74,9 @@ if(isset($_POST['add_to_cart'])){
    <section class="home">
 
       <div class="content">
-         <span>don't panic, go organice</span>
-         <h3>Reach For A Healthier You With Organic Foods</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto natus culpa officia quasi, accusantium explicabo?</p>
+         <span>Hanaku Store : Cemilan Ubi Ungu</span>
+         <h3>Kami Menjual Beberapa Cemilan Khas Kuningan Khususnya Keripik Gemblong Ubi Ungu</h3>
+         <p>Gemblong Ubi Ungu adalah makanan ringan yang terbuat dari bahan dasar ubi jalar warna ungu, berbentuk bulat tipis kering dan renyah, rasanya manis, tampilannya menarik terutama dari sisi warna ungu yang terlihat mencolok. Produk ini home industri, sehingga rasa dan tekstur terjamin. Ubi jalar ungu ini banyak manfaatnya bagi tubuh kita, selain untuk antioksidan, ubi mempunyai kadar gizi tinggi.</p>         
          <a href="about.php" class="btn">about us</a>
       </div>
 
@@ -92,32 +92,24 @@ if(isset($_POST['add_to_cart'])){
 
       <div class="box">
          <img src="images/cat-1.png" alt="">
-         <h3>fruits</h3>
+         <h3>Gemblong Ubi Ungu</h3>
          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat.</p>
-         <a href="category.php?category=fruits" class="btn">fruits</a>
+         <a href="category.php?category=Gemblong Ubi Ungu" class="btn">Gemblong Ubi Ungu</a>
       </div>
 
       <div class="box">
          <img src="images/cat-2.png" alt="">
-         <h3>meat</h3>
+         <h3>Gemblong Ubi</h3>
          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat.</p>
-         <a href="category.php?category=meat" class="btn">meat</a>
+         <a href="category.php?category=Gemblong Ubi" class="btn">Gemblong Ubi</a>
       </div>
 
       <div class="box">
          <img src="images/cat-3.png" alt="">
-         <h3>vegitables</h3>
+         <h3>Lainnya</h3>
          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat.</p>
-         <a href="category.php?category=vegitables" class="btn">vegitables</a>
+         <a href="category.php?category=Lainnya" class="btn">Lainnya</a>
       </div>
-
-      <div class="box">
-         <img src="images/cat-4.png" alt="">
-         <h3>fish</h3>
-         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat.</p>
-         <a href="category.php?category=fish" class="btn">fish</a>
-      </div>
-
    </div>
 
 </section>
@@ -139,12 +131,12 @@ if(isset($_POST['add_to_cart'])){
       <a href="view_page.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
+      <p><font size="2rem"><?= $fetch_products['details'] ?></font></p>
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
       <input type="hidden" name="p_name" value="<?= $fetch_products['name']; ?>">
       <input type="hidden" name="p_price" value="<?= $fetch_products['price']; ?>">
       <input type="hidden" name="p_image" value="<?= $fetch_products['image']; ?>">
       <input type="number" min="1" value="1" name="p_qty" class="qty">
-      <input type="submit" value="add to wishlist" class="option-btn" name="add_to_wishlist">
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
    </form>
    <?php
