@@ -2,7 +2,7 @@
 
 $db_name = "mysql:host=localhost;dbname=db_hanaku";
 $username = "root";
-$password = "";
+$password = "root";
 
 $conn = new PDO($db_name, $username, $password);
 

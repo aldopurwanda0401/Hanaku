@@ -1,6 +1,6 @@
 <?php
 
-@include 'config.php';
+include ('config.php');
 
 session_start();
 
@@ -56,8 +56,9 @@ if(isset($_POST['add_to_cart'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>home page</title>
-
+   <title>HANAKU</title>
+ <!-- Favicons -->
+ <link href="uploaded_img/logo.jpeg" rel="icon" />
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -91,23 +92,23 @@ if(isset($_POST['add_to_cart'])){
    <div class="box-container">
 
       <div class="box">
-         <img src="images/cat-1.png" alt="">
+         <img src="uploaded_img/gemblong_ubi_ungu.jpeg" alt="">
          <h3>Gemblong Ubi Ungu</h3>
-         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat.</p>
+         <p>Keripik gemblong yang dibuat dengan bahan dasar ubi jalar dan bahan-bahan berkualitas</p>
          <a href="category.php?category=Gemblong Ubi Ungu" class="btn">Gemblong Ubi Ungu</a>
       </div>
 
       <div class="box">
-         <img src="images/cat-2.png" alt="">
+         <img src="uploaded_img/gemblong_variasi.jpeg" alt="">
          <h3>Gemblong Ubi</h3>
-         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat.</p>
+         <p>Keripik gemblong yang dibuat dengan bahan dasar ubi jalar dan bahan-bahan berkualitas</p>
          <a href="category.php?category=Gemblong Ubi" class="btn">Gemblong Ubi</a>
       </div>
 
       <div class="box">
-         <img src="images/cat-3.png" alt="">
+         <img src="uploaded_img/basreng.jpg" alt="">
          <h3>Lainnya</h3>
-         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat.</p>
+         <p>Keripik gemblong yang dibuat dengan bahan dasar ubi jalar dan bahan-bahan berkualitas</p>
          <a href="category.php?category=Lainnya" class="btn">Lainnya</a>
       </div>
    </div>

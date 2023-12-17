@@ -4,7 +4,7 @@
 
       <div class="box">
          <h3>quick links</h3>
-         <a href="home.php"> <i class="fas fa-angle-right"></i> home</a>
+         <a href="index.php"> <i class="fas fa-angle-right"></i> home</a>
          <a href="shop.php"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.php"> <i class="fas fa-angle-right"></i> about</a>
          <a href="contact.php"> <i class="fas fa-angle-right"></i> contact</a>
@@ -20,18 +20,14 @@
 
       <div class="box">
          <h3>contact info</h3>
-         <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
-         <p> <i class="fas fa-phone"></i> +111-222-3333 </p>
-         <p> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </p>
-         <p> <i class="fas fa-map-marker-alt"></i> mumbai, india - 400104 </p>
+         <a target="_blank" href="https://api.whatsapp.com/send?phone=6285295580963"><i class="fas fa-phone"></i> +62 852-9558-0963</a>
+         <a target="_blank" href="https://maps.app.goo.gl/GcV1evy7yzV5XTJo7"> <i class="fas fa-map-marker-alt"></i> sembawa, jalaksana, kuningan </a>
       </div>
 
       <div class="box">
          <h3>follow us</h3>
-         <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
-         <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-         <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
-         <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+         <a target="_blank" href="https://www.instagram.com/hanaku.snack/"> <i class="fab fa-instagram"></i> instagram </a>
+         <a target="_blank" href="https://shopee.co.id/hanakusnack"> <i class="fa fa-shopping-bag"></i> shopee </a>
       </div>
 
    </section>
