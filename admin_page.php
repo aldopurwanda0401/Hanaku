@@ -18,7 +18,8 @@ if(!isset($admin_id)){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>admin page</title>
+   <title>admin page</title> <!-- Favicons -->
+ <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -46,7 +47,7 @@ if(!isset($admin_id)){
             $total_pendings += $fetch_pendings['total_price'];
          };
       ?>
-      <h3>$<?= $total_pendings; ?>/-</h3>
+      <h3>Rp<?= $total_pendings; ?>,-</h3>
       <p>total pendings</p>
       <a href="admin_orders.php" class="btn">see orders</a>
       </div>
@@ -60,7 +61,7 @@ if(!isset($admin_id)){
             $total_completed += $fetch_completed['total_price'];
          };
       ?>
-      <h3>$<?= $total_completed; ?>/-</h3>
+      <h3>Rp<?= $total_completed; ?>,-</h3>
       <p>completed orders</p>
       <a href="admin_orders.php" class="btn">see orders</a>
       </div>

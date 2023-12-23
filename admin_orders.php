@@ -38,7 +38,8 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>orders</title>
+   <title>orders</title> <!-- Favicons -->
+ <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -71,7 +72,7 @@ if(isset($_GET['delete'])){
          <p> number : <span><?= $fetch_orders['number']; ?></span> </p>
          <p> address : <span><?= $fetch_orders['address']; ?></span> </p>
          <p> total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
-         <p> total price : <span>$<?= $fetch_orders['total_price']; ?>/-</span> </p>
+         <p> total price : <span>Rp<?= $fetch_orders['total_price']; ?>,-</span> </p>
          <p> payment method : <span><?= $fetch_orders['method']; ?></span> </p>
          <form action="" method="POST">
             <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">

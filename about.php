@@ -18,7 +18,8 @@ if(!isset($user_id)){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>about</title>
+   <title>about</title> <!-- Favicons -->
+ <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -36,17 +37,17 @@ if(!isset($user_id)){
    <div class="row">
 
       <div class="box">
-         <img src="images/about-img-1.png" alt="">
-         <h3>why choose us?</h3>
-         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, a quod, quis alias eius dignissimos pariatur laborum dolorem ad ullam iure, consequatur autem animi illo odit! Atque quia minima voluptatibus.</p>
-         <a href="contact.php" class="btn">contact us</a>
+         <img src="images/boled.jpg" alt="">
+         <h3>Keunikan Kami</h3>
+         <p>"Memproduksi Lezatnya Olahan Ubi Jalar dari Sembawa dan Bandorasa, Langsung dari Tangan Petani Lokal."</p>
+         <a href="contact.php" class="btn">hubungi kami</a>
       </div>
 
       <div class="box">
-         <img src="images/about-img-2.png" alt="">
-         <h3>what we provide?</h3>
-         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, a quod, quis alias eius dignissimos pariatur laborum dolorem ad ullam iure, consequatur autem animi illo odit! Atque quia minima voluptatibus.</p>
-         <a href="shop.php" class="btn">our shop</a>
+         <img src="images/MCY_2215.jpg" alt="">
+         <h3>Produk Unggulan Kami</h3>
+         <p>"Temukan Kelezatan Sejati dalam Gemblong Ubi Ungu, Balado, Cokelat, Jengkol, Udang, dan Varian Lainnya, Hasil Olahan Pilihan Kami."</p>
+         <a href="shop.php" class="btn">belanja sekarang</a>
       </div>
 
    </div>

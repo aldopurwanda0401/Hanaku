@@ -34,7 +34,7 @@ if(isset($message)){
 
    <div class="flex">
 
-      <a href="index.php" class="logo">Hanaku<span>.</span></a>
+      <a href="index.php" class="logo"><img src="uploaded_img/logo.jpeg" style="width: 30px;">Hanaku<span>.</span></a>
 
       <nav class="navbar">
          <a href="index.php">home</a>
