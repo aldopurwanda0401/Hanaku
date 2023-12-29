@@ -37,11 +37,11 @@ if(isset($message)){
       <a href="index.php" class="logo"><img src="uploaded_img/logo.jpeg" style="width: 30px;">Hanaku<span>.</span></a>
 
       <nav class="navbar">
-         <a href="index.php">home</a>
-         <a href="shop.php">shop</a>
-         <a href="orders.php">orders</a>
-         <a href="about.php">about</a>
-         <a href="contact.php">contact</a>
+         <a href="index.php">Beranda</a>
+         <a href="shop.php">Belanja</a>
+         <a href="orders.php">Pesanan</a>
+         <a href="about.php">Tentang</a>
+         <a href="contact.php">Testimoni</a>
       </nav>
 
       <div class="icons">

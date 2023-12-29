@@ -27,7 +27,7 @@ function generateUniqueUserId() {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>orders</title> <!-- Favicons -->
+   <title>Pesanan</title> <!-- Favicons -->
  <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
@@ -43,7 +43,7 @@ function generateUniqueUserId() {
 
 <section class="placed-orders">
 
-   <h1 class="title">placed orders</h1>
+   <h1 class="title">Pesanan</h1>
 
    <div class="box-container">
 
@@ -54,20 +54,19 @@ function generateUniqueUserId() {
          while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){ 
    ?>
    <div class="box">
-      <p> placed on : <span><?= $fetch_orders['placed_on']; ?></span> </p>
-      <p> name : <span><?= $fetch_orders['name']; ?></span> </p>
-      <p> number : <span><?= $fetch_orders['number']; ?></span> </p>
+      <p> Tanggal : <span><?= $fetch_orders['placed_on']; ?></span> </p>
+      <p> Nama : <span><?= $fetch_orders['name']; ?></span> </p>
+      <p> Nomer HP : <span><?= $fetch_orders['number']; ?></span> </p>
       <p> email : <span><?= $fetch_orders['email']; ?></span> </p>
-      <p> address : <span><?= $fetch_orders['address']; ?></span> </p>
-      <p> payment method : <span><?= $fetch_orders['method']; ?></span> </p>
-      <p> your orders : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> total price : <span>Rp<?= $fetch_orders['total_price']; ?>,-</span> </p>
-      <p> payment status : <span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p>
+      <p> Metode Pengambilan : <span><?= $fetch_orders['method']; ?></span> </p>
+      <p> Pesanan Kamu : <span><?= $fetch_orders['total_products']; ?></span> </p>
+      <p> Total Harga : <span>Rp<?= $fetch_orders['total_price']; ?>,-</span> </p>
+      <p> Status Pesanan : <span style="color:<?php if($fetch_orders['payment_status'] == 'Tertunda'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p>
    </div>
    <?php
       }
    }else{
-      echo '<p class="empty">no orders placed yet!</p>';
+      echo '<p class="empty">Belum Ada Pesanan Yg Dilakukan!</p>';
    }
    ?>
 

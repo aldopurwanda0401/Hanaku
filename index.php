@@ -37,13 +37,12 @@ if(isset($_POST['add_to_cart'])){
    $check_cart_numbers->execute([$p_name,$user_id]);
 
    if($check_cart_numbers->rowCount() > 0){
-      $message[] = 'already added to cart!';
-      $_SESSION['cart'] = $check_cart_numbers;
+      $message[] = 'Produk Sudah Ada Di Keranjang!';
    }else{
 
       $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
       $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
-      $message[] = 'added to cart!';
+      $message[] = 'Produk Di Tambahkan Ke Keranjang!';
    }
 
 }
@@ -78,7 +77,7 @@ if(isset($_POST['add_to_cart'])){
          <span>Hanaku Store : Cemilan Ubi Ungu</span>
          <h3>Kami Menjual Beberapa Cemilan Khas Kuningan Khususnya Keripik Gemblong Ubi Ungu</h3>
          <p>Gemblong Ubi Ungu adalah makanan ringan yang terbuat dari bahan dasar ubi jalar warna ungu, berbentuk bulat tipis kering dan renyah, rasanya manis, tampilannya menarik terutama dari sisi warna ungu yang terlihat mencolok. Produk ini home industri, sehingga rasa dan tekstur terjamin. Ubi jalar ungu ini banyak manfaatnya bagi tubuh kita, selain untuk antioksidan, ubi mempunyai kadar gizi tinggi.</p>         
-         <a href="about.php" class="btn">about us</a>
+         <a href="about.php" class="btn">Tentang Kami</a>
       </div>
 
    </section>
@@ -87,7 +86,7 @@ if(isset($_POST['add_to_cart'])){
 
 <section class="home-category">
 
-   <h1 class="title">shop by category</h1>
+   <h1 class="title">Belanja Berdasarkan Kategori</h1>
 
    <div class="box-container">
 
@@ -117,7 +116,7 @@ if(isset($_POST['add_to_cart'])){
 
 <section class="products">
 
-   <h1 class="title">latest products</h1>
+   <h1 class="title">Produk Terbaru</h1>
 
    <div class="box-container">
 
@@ -138,12 +137,12 @@ if(isset($_POST['add_to_cart'])){
       <input type="hidden" name="p_price" value="<?= $fetch_products['price']; ?>">
       <input type="hidden" name="p_image" value="<?= $fetch_products['image']; ?>">
       <input type="number" min="1" value="1" name="p_qty" class="qty">
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
+      <input type="submit" value="Tambah Ke Keranjang" class="btn" name="add_to_cart">
    </form>
    <?php
       }
    }else{
-      echo '<p class="empty">no products added yet!</p>';
+      echo '<p class="empty">Tidak Ada Produk Yg Ditambahkan!</p>';
    }
    ?>
 

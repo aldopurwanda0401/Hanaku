@@ -29,8 +29,6 @@ if(isset($_POST['order'])){
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $method = $_POST['method'];
    $method = filter_var($method, FILTER_SANITIZE_STRING);
-   $address = 'flat no. '. $_POST['flat'] .' '. $_POST['street'] .' '. $_POST['city'] .' '. $_POST['state'] .' '. $_POST['country'] .' - '. $_POST['pin_code'];
-   $address = filter_var($address, FILTER_SANITIZE_STRING);
    $placed_on = date('d-M-Y');
 
    $cart_total = 0;
@@ -48,20 +46,20 @@ if(isset($_POST['order'])){
 
    $total_products = implode(', ', $cart_products);
 
-   $order_query = $conn->prepare("SELECT * FROM `orders` WHERE name = ? AND number = ? AND email = ? AND method = ? AND address = ? AND total_products = ? AND total_price = ?");
-   $order_query->execute([$name, $number, $email, $method, $address, $total_products, $cart_total]);
+   $order_query = $conn->prepare("SELECT * FROM `orders` WHERE name = ? AND number = ? AND email = ? AND method = ? AND total_products = ? AND total_price = ?");
+   $order_query->execute([$name, $number, $email, $method, $total_products, $cart_total]);
 
    if($cart_total == 0){
-      $message[] = 'your cart is empty';
+      $message[] = 'Keranjang Kamu Kosong';
    }elseif($order_query->rowCount() > 0){
-      $message[] = 'order placed already!';
+      $message[] = 'Pesanan Sudah Dilakukan!';
    }else{
       $_SESSION['cart']=$user_id;
-      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price, placed_on) VALUES(?,?,?,?,?,?,?,?,?)");
-      $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $cart_total, $placed_on]);
+      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, total_products, total_price, placed_on) VALUES(?,?,?,?,?,?,?,?)");
+      $insert_order->execute([$user_id, $name, $number, $email, $method, $total_products, $cart_total, $placed_on]);
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$user_id]);
-      $message[] = 'order placed successfully!';
+      $message[] = 'Pesanan Berhasil Dilakukan!';
    }
 
 }
@@ -103,66 +101,39 @@ if(isset($_POST['order'])){
    <?php
     }
    }else{
-      echo '<p class="empty">your cart is empty!</p>';
+      echo '<p class="empty">Keranjang Kamu Kosong!</p>';
    }
    ?>
-   <div class="grand-total">grand total : <span>Rp<?= $cart_grand_total; ?>,-</span></div>
+   <div class="grand-total">Harga Semua Produk : <span>Rp<?= $cart_grand_total; ?>,-</span></div>
 </section>
 
 <section class="checkout-orders">
 
    <form action="" method="POST">
 
-      <h3>place your order</h3>
+      <h3>Ambil Pesanan Kamu</h3>
 
       <div class="flex">
          <div class="inputBox">
-            <span>your name :</span>
-            <input type="text" name="name" placeholder="enter your name" class="box" required>
+            <span>Nama :</span>
+            <input type="text" name="name" placeholder="Masukkan Nama Anda" class="box" required>
          </div>
          <div class="inputBox">
-            <span>your number :</span>
-            <input type="number" name="number" placeholder="enter your number" class="box" required>
+            <span>Nomer HP :</span>
+            <input type="number" name="number" placeholder="Masukkan Nomer HP" class="box" required>
          </div>
          <div class="inputBox">
-            <span>your email :</span>
-            <input type="email" name="email" placeholder="enter your email" class="box" required>
+            <span>Email :</span>
+            <input type="email" name="email" placeholder="Masukkan Alamat Email" class="box" required>
          </div>
          <div class="inputBox">
-            <span>payment method :</span>
-            <select name="method" class="box" required>
-               <option value="cash on delivery">cash on delivery</option>
-               <option value="credit card">credit card</option>
-               <option value="paytm">paytm</option>
-               <option value="paypal">paypal</option>
-            </select>
+            <span>Metode Pengambilan :</span>
+            <input type="text" name="method" value="Ambil Ke Toko" placeholder="Ambil Ke Toko" class="box" readonly>
          </div>
          <div class="inputBox">
-            <span>address line 01 :</span>
-            <input type="text" name="flat" placeholder="e.g. flat number" class="box" required>
-         </div>
-         <div class="inputBox">
-            <span>address line 02 :</span>
-            <input type="text" name="street" placeholder="e.g. street name" class="box" required>
-         </div>
-         <div class="inputBox">
-            <span>city :</span>
-            <input type="text" name="city" placeholder="e.g. mumbai" class="box" required>
-         </div>
-         <div class="inputBox">
-            <span>state :</span>
-            <input type="text" name="state" placeholder="e.g. maharashtra" class="box" required>
-         </div>
-         <div class="inputBox">
-            <span>country :</span>
-            <input type="text" name="country" placeholder="e.g. India" class="box" required>
-         </div>
-         <div class="inputBox">
-            <span>pin code :</span>
-            <input type="number" min="0" name="pin_code" placeholder="e.g. 123456" class="box" required>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4055919.4152055946!2d103.86372198750003!3d-6.9074819999999955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f172ec0d2b38b%3A0x8fd2aed8de54dcf5!2sHana%20Snack!5e0!3m2!1sid!2sid!4v1703702690246!5m2!1sid!2sid" height="400" style="border:0;" class="box" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
          </div>
       </div>
-
       <input type="submit" name="order" class="btn <?= ($cart_grand_total > 1)?'':'disabled'; ?>" value="place order">
 
    </form>

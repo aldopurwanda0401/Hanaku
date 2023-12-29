@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
    $image = filter_var($image, FILTER_SANITIZE_STRING);
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = 'uploaded_img/'.basename($image);
+   $image_folder = 'uploaded_img/'.$image;
 
    $select = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
    $select->execute([$email]);
@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
          $insert = $conn->prepare("INSERT INTO `users`(name, email, password, image) VALUES(?,?,?,?)");
          $insert->execute([$name, $email, $pass, $image]);
 
-         if(!$insert){
+         if($insert){
             if($image_size > 2000000){
                $message[] = 'image size is too large!, Update your foto in profil setting';
             }else{

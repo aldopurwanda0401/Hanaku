@@ -36,12 +36,12 @@ if(isset($_POST['add_to_cart'])){
    $check_cart_numbers->execute([$p_name, $user_id]);
 
    if($check_cart_numbers->rowCount() > 0){
-      $message[] = 'already added to cart!';
+      $message[] = 'Produk Sudah Ada Di Keranjang!';
    }else{
 
       $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
       $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
-      $message[] = 'added to cart!';
+      $message[] = 'Produk Ditambahkan Ke Keranjang!';
    }
 
 }
@@ -70,7 +70,7 @@ if(isset($_POST['add_to_cart'])){
 
 <section class="products">
 
-   <h1 class="title">products categories</h1>
+   <h1 class="title">Kategori Produk</h1>
 
    <div class="box-container">
 
@@ -97,7 +97,7 @@ if(isset($_POST['add_to_cart'])){
    <?php
          }
       }else{
-         echo '<p class="empty">no products available!</p>';
+         echo '<p class="empty">Tidak Ada Produk Yg Tersedia!</p>';
       }
    ?>
 

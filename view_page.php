@@ -36,12 +36,12 @@ if(isset($_POST['add_to_cart'])){
    $check_cart_numbers->execute([$p_name, $user_id]);
 
    if($check_cart_numbers->rowCount() > 0){
-      $message[] = 'already added to cart!';
+      $message[] = 'Produk Sudah Ada Di Keranjang!';
    }else{
 
       $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
       $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
-      $message[] = 'added to cart!';
+      $message[] = 'Produk Di Tambahkan Ke Keranjang!';
    }
 
 }
@@ -70,7 +70,7 @@ if(isset($_POST['add_to_cart'])){
 
 <section class="quick-view">
 
-   <h1 class="title">quick view</h1>
+   <h1 class="title">Tampilan Produk</h1>
 
    <?php
       $pid = $_GET['pid'];
@@ -89,13 +89,12 @@ if(isset($_POST['add_to_cart'])){
       <input type="hidden" name="p_price" value="<?= $fetch_products['price']; ?>">
       <input type="hidden" name="p_image" value="<?= $fetch_products['image']; ?>">
       <input type="number" min="1" value="1" name="p_qty" class="qty">
-      <input type="submit" value="add to wishlist" class="option-btn" name="add_to_wishlist">
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
+      <input type="submit" value="Tambah Ke Keranjang" class="btn" name="add_to_cart">
    </form>
    <?php
          }
       }else{
-         echo '<p class="empty">no products added yet!</p>';
+         echo '<p class="empty">Tidak Ada Produk Yg Tersedia!</p>';
       }
    ?>
 
