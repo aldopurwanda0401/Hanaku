@@ -43,7 +43,6 @@ if(isset($message)){
          <a href="logout.php" class="delete-btn">Keluar</a>
          <div class="flex-btn">
             <a href="login.php" class="option-btn">Masuk</a>
-            <a href="register.php" class="option-btn">register</a>
          </div>
       </div>
 

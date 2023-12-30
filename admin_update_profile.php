@@ -29,14 +29,14 @@ if(isset($_POST['update_profile'])){
 
    if(!empty($image)){
       if($image_size > 2000000){
-         $message[] = 'image size is too large!';
+         $message[] = 'Ukuran Gambar Terlalu Besar!';
       }else{
          $update_image = $conn->prepare("UPDATE `users` SET image = ? WHERE id = ?");
          $update_image->execute([$image, $admin_id]);
          if($update_image){
             move_uploaded_file($image_tmp_name, $image_folder);
             unlink('uploaded_img/'.$old_image);
-            $message[] = 'image updated successfully!';
+            $message[] = 'Update Gambar Berhasil!';
          };
       };
    };
@@ -51,13 +51,13 @@ if(isset($_POST['update_profile'])){
 
    if(!empty($update_pass) AND !empty($new_pass) AND !empty($confirm_pass)){
       if($update_pass != $old_pass){
-         $message[] = 'old password not matched!';
+         $message[] = 'Kata Sandi Lama Tidak Cocok!';
       }elseif($new_pass != $confirm_pass){
-         $message[] = 'confirm password not matched!';
+         $message[] = 'Konfirmasi Kata Sandi Tidak Cocok!';
       }else{
          $update_pass_query = $conn->prepare("UPDATE `users` SET password = ? WHERE id = ?");
          $update_pass_query->execute([$confirm_pass, $admin_id]);
-         $message[] = 'password updated successfully!';
+         $message[] = 'Update Password Berhasil!';
       }
    }
 
@@ -71,7 +71,7 @@ if(isset($_POST['update_profile'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update admin profile</title> <!-- Favicons -->
+   <title>Edit Profil Admin</title> <!-- Favicons -->
  <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
@@ -87,33 +87,33 @@ if(isset($_POST['update_profile'])){
 
 <section class="update-profile">
 
-   <h1 class="title">update profile</h1>
+   <h1 class="title">Edit Profile</h1>
 
    <form action="" method="POST" enctype="multipart/form-data">
       <img src="uploaded_img/<?= $fetch_profile['image']; ?>" alt="">
       <div class="flex">
          <div class="inputBox">
-            <span>username :</span>
-            <input type="text" name="name" value="<?= $fetch_profile['name']; ?>" placeholder="update username" required class="box">
-            <span>email :</span>
-            <input type="email" name="email" value="<?= $fetch_profile['email']; ?>" placeholder="update email" required class="box">
-            <span>update pic :</span>
+            <span>Nama :</span>
+            <input type="text" name="name" value="<?= $fetch_profile['name']; ?>" placeholder="Update Nama" required class="box">
+            <span>Email :</span>
+            <input type="email" name="email" value="<?= $fetch_profile['email']; ?>" placeholder="Update Email" required class="box">
+            <span>Edit Gambar :</span>
             <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box">
             <input type="hidden" name="old_image" value="<?= $fetch_profile['image']; ?>">
          </div>
          <div class="inputBox">
             <input type="hidden" name="old_pass" value="<?= $fetch_profile['password']; ?>">
-            <span>old password :</span>
-            <input type="password" name="update_pass" placeholder="enter previous password" class="box">
-            <span>new password :</span>
-            <input type="password" name="new_pass" placeholder="enter new password" class="box">
-            <span>confirm password :</span>
-            <input type="password" name="confirm_pass" placeholder="confirm new password" class="box">
+            <span>Password Lama :</span>
+            <input type="password" name="update_pass" placeholder="Masukkan Password Sebelumnya" class="box">
+            <span>Password Baru :</span>
+            <input type="password" name="new_pass" placeholder="Masukkan Password Baru" class="box">
+            <span>Konfirmasi Password Baru :</span>
+            <input type="password" name="confirm_pass" placeholder="Konfirmasi Password Baru" class="box">
          </div>
       </div>
       <div class="flex-btn">
-         <input type="submit" class="btn" value="update profile" name="update_profile">
-         <a href="admin_page.php" class="option-btn">go back</a>
+         <input type="submit" class="btn" value="Perbarui Profil" name="update_profile">
+         <a href="admin_page.php" class="option-btn">Kembali</a>
       </div>
    </form>
 

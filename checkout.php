@@ -134,7 +134,7 @@ if(isset($_POST['order'])){
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4055919.4152055946!2d103.86372198750003!3d-6.9074819999999955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f172ec0d2b38b%3A0x8fd2aed8de54dcf5!2sHana%20Snack!5e0!3m2!1sid!2sid!4v1703702690246!5m2!1sid!2sid" height="400" style="border:0;" class="box" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
          </div>
       </div>
-      <input type="submit" name="order" class="btn <?= ($cart_grand_total > 1)?'':'disabled'; ?>" value="place order">
+      <input type="submit" name="order" class="btn <?= ($cart_grand_total > 1)?'':'disabled'; ?>" value="Pesan Sekarang">
 
    </form>
 

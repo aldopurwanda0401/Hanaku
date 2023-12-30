@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
       }
 
    }else{
-      $message[] = 'incorrect email or password!';
+      $message[] = 'Email dan Password Salah!';
    }
 
 }
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>login</title> <!-- Favicons -->
+   <title>Login Admin</title> <!-- Favicons -->
  <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
@@ -78,11 +78,11 @@ if(isset($message)){
 <section class="form-container">
 
    <form action="" method="POST">
-      <h3>login now</h3>
-      <input type="email" name="email" class="box" placeholder="enter your email" required>
-      <input type="password" name="pass" class="box" placeholder="enter your password" required>
-      <input type="submit" value="login now" class="btn" name="submit">
-      <p>don't have an account? <a href="register.php">register now</a></p>
+      <h3>Login Admin</h3>
+      <input type="email" name="email" class="box" placeholder="Masukkan Email" required>
+      <input type="password" name="pass" class="box" placeholder="Masukkan Password" required>
+      <input type="submit" value="Login Sekarang" class="btn" name="submit">
+      <p><a href="index.php">Kembali Ke Halaman Utama ?</a></p>   
    </form>
 
 </section>

@@ -17,7 +17,7 @@ if(isset($_POST['update_order'])){
    $update_payment = filter_var($update_payment, FILTER_SANITIZE_STRING);
    $update_orders = $conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
    $update_orders->execute([$update_payment, $order_id]);
-   $message[] = 'payment has been updated!';
+   $message[] = 'Pesanan berhasil diupdate!';
 
 };
 
@@ -65,7 +65,7 @@ if(isset($_GET['delete'])){
             while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
       ?>
       <div class="box">
-         <p> Id User : <span><?= $fetch_orders['user_id']; ?></span> </p>
+         <p> Id Pelanggan : <span><?= $fetch_orders['user_id']; ?></span> </p>
          <p> Tanggal : <span><?= $fetch_orders['placed_on']; ?></span> </p>
          <p> Nama : <span><?= $fetch_orders['name']; ?></span> </p>
          <p> Email : <span><?= $fetch_orders['email']; ?></span> </p>
@@ -81,7 +81,7 @@ if(isset($_GET['delete'])){
                <option value="Selesai">Selesai</option>
             </select>
             <div class="flex-btn">
-               <input type="submit" name="update_order" class="option-btn" value="Perbaharui">
+               <input type="submit" name="update_order" class="option-btn" value="Perbarui">
                <a href="admin_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('Hapus Pesanan Ini?');">Hapus</a>
             </div>
          </form>
@@ -89,7 +89,7 @@ if(isset($_GET['delete'])){
       <?php
          }
       }else{
-         echo '<p class="empty">no orders placed yet!</p>';
+         echo '<p class="empty">Tidak Ada Pesanan Yang Masuk!</p>';
       }
       ?>
 

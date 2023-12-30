@@ -18,7 +18,7 @@ if(!isset($user_id)){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>about</title> <!-- Favicons -->
+   <title>Tentang</title> <!-- Favicons -->
  <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
@@ -40,7 +40,7 @@ if(!isset($user_id)){
          <img src="images/boled.jpg" alt="">
          <h3>Keunikan Kami</h3>
          <p>"Memproduksi Lezatnya Olahan Ubi Jalar dari Sembawa dan Bandorasa, Langsung dari Tangan Petani Lokal."</p>
-         <a href="contact.php" class="btn">hubungi kami</a>
+         <a href="https://api.whatsapp.com/send?phone=6285295580963" class="btn">hubungi kami</a>
       </div>
 
       <div class="box">

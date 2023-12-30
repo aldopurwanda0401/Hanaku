@@ -19,21 +19,6 @@ function generateUniqueUserId() {
    return $unique_id;
 }
 
-if(isset($_POST['add_to_wishlist'])){
-
-   $pid = $_POST['pid'];
-   $pid = filter_var($pid, FILTER_SANITIZE_STRING);
-   $p_name = $_POST['p_name'];
-   $p_name = filter_var($p_name, FILTER_SANITIZE_STRING);
-   $p_price = $_POST['p_price'];
-   $p_price = filter_var($p_price, FILTER_SANITIZE_STRING);
-   $p_image = $_POST['p_image'];
-   $p_image = filter_var($p_image, FILTER_SANITIZE_STRING);
-
-   $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
-   $check_cart_numbers->execute([$p_name, $user_id]);
-
-}
 
 if(isset($_POST['add_to_cart'])){
 
@@ -52,12 +37,12 @@ if(isset($_POST['add_to_cart'])){
    $check_cart_numbers->execute([$p_name, $user_id]);
 
    if($check_cart_numbers->rowCount() > 0){
-      $message[] = 'already added to cart!';
+      $message[] = 'Produk Sudah Ada Di Keranjang!';
    }else{
 
       $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
       $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
-      $message[] = 'added to cart!';
+      $message[] = 'Produk Ditambahkan Ke Keranjang!';
    }
 
 }
@@ -70,7 +55,7 @@ if(isset($_POST['add_to_cart'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>search page</title> <!-- Favicons -->
+   <title>Cari Produk</title> <!-- Favicons -->
  <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
@@ -87,8 +72,8 @@ if(isset($_POST['add_to_cart'])){
 <section class="search-form">
 
    <form action="" method="POST">
-      <input type="text" class="box" name="search_box" placeholder="search products...">
-      <input type="submit" name="search_btn" value="search" class="btn">
+      <input type="text" class="box" name="search_box" placeholder="cari produk...">
+      <input type="submit" name="search_btn" value="cari" class="btn">
    </form>
 
 </section>
@@ -122,13 +107,12 @@ if(isset($_POST['add_to_cart'])){
       <input type="hidden" name="p_price" value="<?= $fetch_products['price']; ?>">
       <input type="hidden" name="p_image" value="<?= $fetch_products['image']; ?>">
       <input type="number" min="1" value="1" name="p_qty" class="qty">
-      <input type="submit" value="add to wishlist" class="option-btn" name="add_to_wishlist">
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
+      <input type="submit" value="Tambah Ke Keranjang" class="btn" name="add_to_cart">
    </form>
    <?php
          }
       }else{
-         echo '<p class="empty">no result found!</p>';
+         echo '<p class="empty">Produk Tidak Ditemukan!</p>';
       }
       
    };

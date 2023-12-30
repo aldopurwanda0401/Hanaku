@@ -32,11 +32,11 @@ if(isset($_POST['update_product'])){
    $update_product = $conn->prepare("UPDATE `products` SET name = ?, category = ?, details = ?, price = ? WHERE id = ?");
    $update_product->execute([$name, $category, $details, $price, $pid]);
 
-   $message[] = 'product updated successfully!';
+   $message[] = 'Edit Produk Berhasil!';
 
    if(!empty($image)){
       if($image_size > 2000000){
-         $message[] = 'image size is too large!';
+         $message[] = 'Ukuran Gambar Terlalu Besar!';
       }else{
 
          $update_image = $conn->prepare("UPDATE `products` SET image = ? WHERE id = ?");
@@ -45,7 +45,7 @@ if(isset($_POST['update_product'])){
          if($update_image){
             move_uploaded_file($image_tmp_name, $image_folder);
             unlink('uploaded_img/'.$old_image);
-            $message[] = 'image updated successfully!';
+            $message[] = 'Update Gambar Berhasil!';
          }
       }
    }
@@ -60,7 +60,7 @@ if(isset($_POST['update_product'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update products</title> <!-- Favicons -->
+   <title>Edit Produk</title> <!-- Favicons -->
  <link href="uploaded_img/logo.jpeg" rel="icon" />
 
    <!-- font awesome cdn link  -->
@@ -76,7 +76,7 @@ if(isset($_POST['update_product'])){
 
 <section class="update-product">
 
-   <h1 class="title">update product</h1>   
+   <h1 class="title">Edit Produk</h1>   
 
    <?php
       $update_id = $_GET['update'];
@@ -101,13 +101,13 @@ if(isset($_POST['update_product'])){
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
       <div class="flex-btn">
          <input type="submit" class="btn" value="update product" name="update_product">
-         <a href="admin_products.php" class="option-btn">go back</a>
+         <a href="admin_products.php" class="option-btn">Kembali</a>
       </div>
    </form>
    <?php
          }
       }else{
-         echo '<p class="empty">no products found!</p>';
+         echo '<p class="empty">Tidak Ada Produk Yg Ditemukan/p>';
       }
    ?>
 
